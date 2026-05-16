@@ -27,14 +27,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import numpy as np
 
-from database import engine, get_db, Base
+from database import engine, get_db, Base, wait_for_db
 from models import User
 from face_engine import load_all_known_faces, recognize_from_image, KNOWN_FACES_DIR
 from fingerprint import get_scanner, SCANNER_TYPE
 from two_factor import run_two_factor_check
 from attendance import get_today_records, get_today_denials
 
-# Create all DB tables
+# Wait for DB then create all tables
+wait_for_db()
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(

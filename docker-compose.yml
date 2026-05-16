@@ -17,13 +17,21 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "admin", "-psecret"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
   app:
     build: .
     container_name: attendance_app
     restart: always
 
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
 
     ports:
       - "8000:8000"
@@ -33,6 +41,7 @@ services:
       DB_USER: admin
       DB_PASSWORD: secret
       DB_NAME: attendance
+      FINGERPRINT_TYPE: SIMULATE
 
 volumes:
   mysql_data:
