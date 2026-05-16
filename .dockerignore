@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pyo
+.git/
+build.log
+uvicorn.log
+packages.microsoft.gpg
+apache.conf

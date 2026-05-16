@@ -32,7 +32,12 @@ RUN pip install --no-cache-dir face-recognition==1.3.0
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# setuptools 80+ removed pkg_resources; face_recognition_models needs it
+RUN pip install "setuptools>=60,<80"
+
 COPY . .
+
+RUN mkdir -p known_faces
 
 EXPOSE 8000
 
