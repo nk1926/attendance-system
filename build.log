@@ -1,0 +1,112 @@
+ Image attendance-system-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 558B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.25kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.10-slim
+#3 DONE 2.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 930B done
+#5 DONE 0.0s
+
+#6 [ 1/10] FROM docker.io/library/python:3.10-slim@sha256:a3699f905b890636146817f204e73d9aa61329127b0c60e46310c44f9f0612b2
+#6 resolve docker.io/library/python:3.10-slim@sha256:a3699f905b890636146817f204e73d9aa61329127b0c60e46310c44f9f0612b2 0.0s done
+#6 DONE 0.0s
+
+#7 [ 2/10] WORKDIR /app
+#7 CACHED
+
+#8 [ 3/10] RUN echo "deb http://deb.debian.org/debian bookworm main" > /etc/apt/sources.list &&     echo "deb http://deb.debian.org/debian-security bookworm-security main" >> /etc/apt/sources.list &&     echo "deb http://deb.debian.org/debian bookworm-updates main" >> /etc/apt/sources.list
+#8 DONE 0.3s
+
+#9 [ 4/10] RUN apt-get update && apt-get install -y --no-install-recommends     git     build-essential     cmake     g++     gcc     pkg-config     libglib2.0-0     libgl1     libsm6     libxext6     libxrender-dev     libfreetype6-dev     curl     && rm -rf /var/lib/apt/lists/*
+#9 0.479 Err:1 http://deb.debian.org/debian bookworm InRelease
+#9 0.479   403  Forbidden [IP: 151.101.130.132 80]
+#9 0.529 Err:2 http://deb.debian.org/debian-security bookworm-security InRelease
+#9 0.529   403  Forbidden [IP: 151.101.130.132 80]
+#9 0.587 Err:3 http://deb.debian.org/debian bookworm-updates InRelease
+#9 0.587   403  Forbidden [IP: 151.101.130.132 80]
+#9 0.638 Err:4 http://deb.debian.org/debian trixie InRelease
+#9 0.638   403  Forbidden [IP: 151.101.130.132 80]
+#9 0.690 Err:5 http://deb.debian.org/debian trixie-updates InRelease
+#9 0.690   403  Forbidden [IP: 151.101.130.132 80]
+#9 0.743 Err:6 http://deb.debian.org/debian-security trixie-security InRelease
+#9 0.743   403  Forbidden [IP: 151.101.130.132 80]
+#9 0.750 Reading package lists...
+#9 0.777 E: The repository 'http://deb.debian.org/debian bookworm InRelease' is not signed.
+#9 0.777 E: Failed to fetch http://deb.debian.org/debian/dists/bookworm/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+#9 0.777 E: The repository 'http://deb.debian.org/debian-security bookworm-security InRelease' is not signed.
+#9 0.777 E: Failed to fetch http://deb.debian.org/debian-security/dists/bookworm-security/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+#9 0.777 E: The repository 'http://deb.debian.org/debian bookworm-updates InRelease' is not signed.
+#9 0.777 E: Failed to fetch http://deb.debian.org/debian/dists/bookworm-updates/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+#9 0.777 E: The repository 'http://deb.debian.org/debian trixie InRelease' is no longer signed.
+#9 0.777 E: Failed to fetch http://deb.debian.org/debian/dists/trixie/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+#9 0.777 E: Failed to fetch http://deb.debian.org/debian/dists/trixie-updates/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+#9 0.777 E: The repository 'http://deb.debian.org/debian trixie-updates InRelease' is no longer signed.
+#9 0.777 E: Failed to fetch http://deb.debian.org/debian-security/dists/trixie-security/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+#9 0.777 E: The repository 'http://deb.debian.org/debian-security trixie-security InRelease' is no longer signed.
+#9 ERROR: process "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends     git     build-essential     cmake     g++     gcc     pkg-config     libglib2.0-0     libgl1     libsm6     libxext6     libxrender-dev     libfreetype6-dev     curl     && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 100
+------
+ > [ 4/10] RUN apt-get update && apt-get install -y --no-install-recommends     git     build-essential     cmake     g++     gcc     pkg-config     libglib2.0-0     libgl1     libsm6     libxext6     libxrender-dev     libfreetype6-dev     curl     && rm -rf /var/lib/apt/lists/*:
+0.777 E: The repository 'http://deb.debian.org/debian-security bookworm-security InRelease' is not signed.
+0.777 E: Failed to fetch http://deb.debian.org/debian-security/dists/bookworm-security/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+0.777 E: The repository 'http://deb.debian.org/debian bookworm-updates InRelease' is not signed.
+0.777 E: Failed to fetch http://deb.debian.org/debian/dists/bookworm-updates/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+0.777 E: The repository 'http://deb.debian.org/debian trixie InRelease' is no longer signed.
+0.777 E: Failed to fetch http://deb.debian.org/debian/dists/trixie/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+0.777 E: Failed to fetch http://deb.debian.org/debian/dists/trixie-updates/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+0.777 E: The repository 'http://deb.debian.org/debian trixie-updates InRelease' is no longer signed.
+0.777 E: Failed to fetch http://deb.debian.org/debian-security/dists/trixie-security/InRelease  403  Forbidden [IP: 151.101.130.132 80]
+0.777 E: The repository 'http://deb.debian.org/debian-security trixie-security InRelease' is no longer signed.
+------
+Dockerfile:13
+
+--------------------
+
+  12 |     # Install system dependencies
+
+  13 | >>> RUN apt-get update && apt-get install -y --no-install-recommends \
+
+  14 | >>>     git \
+
+  15 | >>>     build-essential \
+
+  16 | >>>     cmake \
+
+  17 | >>>     g++ \
+
+  18 | >>>     gcc \
+
+  19 | >>>     pkg-config \
+
+  20 | >>>     libglib2.0-0 \
+
+  21 | >>>     libgl1 \
+
+  22 | >>>     libsm6 \
+
+  23 | >>>     libxext6 \
+
+  24 | >>>     libxrender-dev \
+
+  25 | >>>     libfreetype6-dev \
+
+  26 | >>>     curl \
+
+  27 | >>>     && rm -rf /var/lib/apt/lists/*
+
+  28 |     
+
+--------------------
+
+failed to solve: process "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends     git     build-essential     cmake     g++     gcc     pkg-config     libglib2.0-0     libgl1     libsm6     libxext6     libxrender-dev     libfreetype6-dev     curl     && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 100
+

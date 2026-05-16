@@ -1,0 +1,38 @@
+services:
+
+  mysql:
+    image: mysql:8
+    container_name: attendance_mysql
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: attendance
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: secret
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: attendance_app
+    restart: always
+
+    depends_on:
+      - mysql
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      DB_HOST: mysql
+      DB_USER: admin
+      DB_PASSWORD: secret
+      DB_NAME: attendance
+
+volumes:
+  mysql_data:
